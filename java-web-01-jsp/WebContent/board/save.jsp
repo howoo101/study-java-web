@@ -1,3 +1,5 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
@@ -7,9 +9,11 @@
 <%
 	//한글 깨짐 방지 인코딩 설정 
 	request.setCharacterEncoding("utf-8");
+	String boardSeq = request.getParameter("boardSeq");
 	String title = request.getParameter("title");
 	String contents = request.getParameter("contents");
 	boolean save = false;
+	boolean update = false;
 	//검증 (필수값) 
 	boolean validate = true;
 	String message = "제목을 입력해주세영ㅇㅇㅇㅇㅇㅇㅇㅇ";
@@ -33,13 +37,34 @@
 			String password = "1234";
 			
 			connection = DriverManager.getConnection(jdbcUrl,user,password);
-			String sql = "insert T_BOARD  (TITLE, CONTENTS, REG_DATE) " +
-				"VALUES (?, ?,NOW())";
+			if(boardSeq != null || !boardSeq.isEmpty()) {
+				String sql = "SELECT BOARD_SEQ, TITLE,CONTENTS,REG_DATE FROM T_BOARD " +
+						"WHERE BOARD_SEQ = " + boardSeq;
+				Statement stmt2 = connection.createStatement();
+				ResultSet rs = stmt2.executeQuery(sql);
+				
+				while (rs.next()) {
+					update = true;
+				}
+			}
+			
+			String sql = null;
+					
+			if(update) {
+				sql = "UPDATE T_BOARD SET TITLE = ?, CONTENTS = ? WHERE BOARD_SEQ = ?";
+				message = "게시물 업데이트를 완료 하였습니다.";
+			}else {
+				sql = "insert T_BOARD  (TITLE, CONTENTS, REG_DATE) " +
+						"VALUES (?, ?,NOW())";
+				message = "게시글이 등록을  완료 하였습니다.";
+			}
 			
 			stmt = connection.prepareStatement(sql);
 			stmt.setString(1, title);
 			stmt.setString(2, contents);
-			
+			if(update) {
+				stmt.setString(3,boardSeq);
+			}
 
 			int result = stmt.executeUpdate();
 			if (result == 0) {
@@ -68,7 +93,7 @@
 	var save = <%= save %>;
 	var massage = '<%= message %>';
 	if(save) {
-		alert("완려 ");
+		alert("");
 	location.href="/board/list.jsp";
 	}else {
 		alert("!!!!!");
