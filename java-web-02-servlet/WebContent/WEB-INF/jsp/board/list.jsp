@@ -24,7 +24,7 @@
 				<th scope="row">${board.boardSeq}</th>
 				<td>
 				<a href="/board/detail?boardSeq=${board.boardSeq}">
-					${board.title}
+					${board.title }
 				</a>
 				</td>
 				<td>${board.regDate}</td>
@@ -36,8 +36,8 @@
 					<td colspan="3">게시물이 존재하지 않습니다.</td>	
 				</c:if>
 			</tr>
-			
 			</table>
+			<%@ include file="/WEB-INF/jsp/common/footer.jsp" %>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	</body>
 </html>

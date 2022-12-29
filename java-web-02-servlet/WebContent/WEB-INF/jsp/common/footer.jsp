@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<form action="/board/form">
+      	<button class="btn btn-outline-success" type="submit">글쓰기 </button>
+     </form>
+     <button class="btn btn-outline-success" onclick="location.href='/board/list'">목록 </button>
+     
 
+     
 </body>
 </html>

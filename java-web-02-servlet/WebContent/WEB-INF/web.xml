@@ -25,7 +25,35 @@
   	<url-pattern>/board/detail</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>boardForm</servlet-name>
+  	<servlet-class>example.servlet.BoardFormServlet</servlet-class>
+  </servlet>
   
+  <servlet-mapping>
+  	<servlet-name>boardForm</servlet-name>
+  	<url-pattern>/board/form</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>boardSave</servlet-name>
+  	<servlet-class>example.servlet.BoardSaveServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>boardSave</servlet-name>
+  	<url-pattern>/board/save</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>boardDelete</servlet-name>
+  	<servlet-class>example.servlet.BoarDeleteServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>boardDelete</servlet-name>
+  	<url-pattern>/board/delete</url-pattern>
+  </servlet-mapping>
   
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

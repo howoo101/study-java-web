@@ -42,5 +42,18 @@
 		ORDER BY REG_DATE DESC
 	</select>
 	
-
+	<insert id="insertBoard" parameterClass="example.domain.Board">
+		INSERT INTO T_BOARD (TITLE, CONTENTS, REG_DATE)
+		VALUES (#title#,#contents#,now())
+	</insert>
+	
+	<update id="updateBoard" parameterClass="example.domain.Board">
+		UPDATE T_BOARD SET TITLE = #title#
+					       ,CONTENTS = #contents#
+        WHERE BOARD_SEQ = #boardSeq#
+	</update>
+	
+	 <delete id="deleteBoard" parameterClass="java.lang.String">
+    	delete from T_BOARD where BOARD_SEQ = #boardSeq#
+  	</delete>
 </sqlMap>

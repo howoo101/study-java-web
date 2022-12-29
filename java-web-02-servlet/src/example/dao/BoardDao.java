@@ -21,4 +21,20 @@ public class BoardDao {
 				.queryForObject("selectBoard",boardSeq);
 		
 	}
+
+	public void insertBoard(Board board) throws SQLException {
+		BaseSqlMapConfig.getInstance()
+				.insert("insertBoard",board);
+		
+	}
+
+	public void updateBoard(Board board) throws SQLException {
+		BaseSqlMapConfig.getInstance()
+			.update("updateBoard",board);
+	}
+
+	public void deleteBoard(String boardSeq) throws SQLException {
+		BaseSqlMapConfig.getInstance()
+			.delete("deleteBoard",boardSeq);
+	}
 }

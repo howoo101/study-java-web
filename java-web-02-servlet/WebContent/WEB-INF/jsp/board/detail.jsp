@@ -32,8 +32,8 @@
 
 	<div class="mt-2">
 		<a class="btn btn-primary" href="/board/list">목록</a> 
-		<a class="btn btn-secondary" href="/board/form?boardSeq=${boardSeq}">수정</a> 
-		<a class="btn btn-danger" href="/board/delete?boardSeq=${boardSeq}">삭제</a>
+		<a class="btn btn-secondary" href="/board/form?boardSeq=${board.boardSeq}">수정</a> 
+		<a class="btn btn-danger" href="/board/delete?boardSeq=${board.boardSeq}">삭제</a>
 	</div>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

@@ -18,4 +18,18 @@ public class BoardService {
 	public Board selectBoard(String boardSeq) throws SQLException {
 		return boardDao.selectBoard(boardSeq);
 	}
+
+	public void insertBoard(Board board) throws SQLException {
+		boardDao.insertBoard(board);
+	}
+
+	public void updateBoard(Board board) throws SQLException {
+		boardDao.updateBoard(board);
+		
+	}
+
+	public void deleteBoard(String boardSeq) throws SQLException {
+		boardDao.deleteBoard(boardSeq);
+		
+	}
 }
