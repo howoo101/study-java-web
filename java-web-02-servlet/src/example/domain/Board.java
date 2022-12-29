@@ -3,6 +3,7 @@ package example.domain;
 public class Board {
 	private String boardSeq;
 	private String title;
+	private String contents;
 	private String regDate;
 
 	public String getBoardSeq() {
@@ -20,7 +21,7 @@ public class Board {
 	public void setTitle(String title) {
 		this.title = title;
 	}
-
+	
 	public String getRegDate() {
 		return regDate;
 	}
@@ -29,4 +30,17 @@ public class Board {
 		this.regDate = regDate;
 	}
 
+	public String getContents() {
+		return contents;
+	}
+
+	public void setContents(String contents) {
+		this.contents = contents;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString();
+	}
+	
 }

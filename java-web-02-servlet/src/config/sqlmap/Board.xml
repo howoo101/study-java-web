@@ -3,7 +3,6 @@
 "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap>
-
 	<!-- 게시물 목록 결과 맵 -->
 	<resultMap id="selectBoardListResultMap" class="example.domain.Board">
 		<result column="BOARD_SEQ" property="boardSeq" />
@@ -11,14 +10,37 @@
 		<result column="REG_DATE" property="regDate" />
 	</resultMap>
 	
+	<resultMap id="selectBoardDetailResultMap" class="example.domain.Board">
+		<result column="BOARD_SEQ" property="boardSeq" />			
+		<result column="TITLE" property="title" />
+		<result column="CONTENTS" property="contents" />
+		<result column="REG_DATE" property="regDate" />
+	</resultMap>
+	
 	<!-- 게시물 목록 조회 쿼리 -->
 	<select id="selectBoardList" resultMap="selectBoardListResultMap">
 		SELECT
 			BOARD_SEQ
-			,TITLE,
+			,TITLE
 			,REG_DATE
 		FROM T_BOARD
+		<isNotEmpty property="query">
+			WHERE TITLE LIKE CONCAT('%', CONCAT(#query#, '%'))
+		</isNotEmpty>
 		ORDER BY REG_DATE DESC
 	</select>
+	
+	<select id="selectBoard" resultMap="selectBoardDetailResultMap" parameterClass="java.lang.String">
+	
+		SELECT
+			BOARD_SEQ
+			,TITLE
+			,CONTENTS
+			,REG_DATE
+		FROM T_BOARD
+			WHERE BOARD_SEQ = #boardSeq#
+		ORDER BY REG_DATE DESC
+	</select>
+	
 
 </sqlMap>

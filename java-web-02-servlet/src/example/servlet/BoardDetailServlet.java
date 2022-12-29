@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import example.domain.Board;
 import example.service.BoardService;
 
-public class BoardListServlet extends HttpServlet{
+public class BoardDetailServlet extends HttpServlet{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -25,15 +25,10 @@ public class BoardListServlet extends HttpServlet{
 
 		try {
 			//검색조건 
-			String query = req.getParameter("query");
-			Map<String,Object> paramMap = new HashMap<>();
-			paramMap.put("query", query);
-			
-			
-			List<Board> boardList = boardService.selectBoardList(paramMap);
-			req.setAttribute("boardList", boardList);
-			
-			req.getRequestDispatcher("/WEB-INF/jsp/board/list.jsp")
+			String boardSeq = req.getParameter("boardSeq");
+			Board board = boardService.selectBoard(boardSeq);
+			req.setAttribute("board", board);
+			req.getRequestDispatcher("/WEB-INF/jsp/board/detail.jsp")
 			.forward(req, resp);
 			
 		} catch (SQLException e) {

@@ -15,6 +15,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<%@ include file="/common/header.jsp" %>
+	<%@ include file="/WEB-INF/jsp/board/list.jsp" %>
 </body>
 </html>
