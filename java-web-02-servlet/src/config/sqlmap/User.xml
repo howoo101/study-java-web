@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN"
+"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap>
+	<!-- 게시물 목록 결과 맵 -->
+	<resultMap id="selectUserResultMap" class="example.domain.User">
+		<result column="USER_SEQ" property="userSeq" />
+		<result column="USER_ID" property="userId" />
+		<result column="PASSWORD" property="password" />
+		<result column="USER_NAME" property="userName" />
+		<result column="JOIN_DATE" property="joinDate" />
+	</resultMap>
+	
+	
+	<select id="selectUser" parameterClass="example.domain.User">
+	
+		SELECT
+			BOARD_SEQ
+			,TITLE
+			,CONTENTS
+			,REG_DATE
+		FROM T_BOARD
+			WHERE BOARD_SEQ = #boardSeq#
+		ORDER BY REG_DATE DESC
+	</select>
+	
+	<insert id="insertBoard" parameterClass="example.domain.Board">
+		INSERT INTO T_BOARD (TITLE, CONTENTS, REG_DATE)
+		VALUES (#title#,#contents#,now())
+	</insert>
+	
+	<update id="updateBoard" parameterClass="example.domain.Board">
+		UPDATE T_BOARD SET TITLE = #title#
+					       ,CONTENTS = #contents#
+        WHERE BOARD_SEQ = #boardSeq#
+	</update>
+	
+	 <delete id="deleteBoard" parameterClass="java.lang.String">
+    	delete from T_BOARD where BOARD_SEQ = #boardSeq#
+  	</delete>
+</sqlMap>

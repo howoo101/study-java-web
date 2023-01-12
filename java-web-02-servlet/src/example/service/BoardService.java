@@ -14,11 +14,20 @@ public class BoardService {
 		return boardDao.selectBoardList(paramMap);
 				
 	}
-
+	
 	public Board selectBoard(String boardSeq) throws SQLException {
 		return boardDao.selectBoard(boardSeq);
 	}
-
+	
+	public void save(Board board) throws SQLException {
+		Board selectBoard = selectBoard(board.getBoardSeq());
+		if (selectBoard ==null) {
+			boardDao.insertBoard(selectBoard);
+		}else {
+			boardDao.updateBoard(selectBoard);
+		}
+	}
+	
 	public void insertBoard(Board board) throws SQLException {
 		boardDao.insertBoard(board);
 	}

@@ -9,22 +9,19 @@
 	</head>
 	<body>
 		 <%@ include file="/WEB-INF/jsp/common/header.jsp" %>
-		<form action="/board/form" method="post">
-			<input type="hidden" name="boardSeq" 
-				value="${board.boardSeq}" />
+		<form action="/board/login" method="post">
 			<div class="mb-3">
-				<label for="title" class="form-label">제목</label>
+				<label for="id" class="form-label">아이디 </label>
 				<input type="text" class="form-control"
-					name="title" id="title" value="${board.title}" placeholder="게시글의 제목">
+					name="id" id="id" value="${board.title}" placeholder="아이디 ">
 			</div>
 			<div class="mb-3">
-				<label for="contents" class="form-label">내용</label>
-				<textarea class="form-control" 
-					name="contents" 
-					id="contents"
-					rows="3">${board.contents}</textarea>
+				<label for="password" class="form-label">비밀반호  </label>
+				<input type="text" class="form-control"
+					name="password" id="password" value="${board.title}" placeholder="password">
 			</div>
-			<button type="submit" class="btn btn-primary">등록하기</button>
+			
+			<button type="submit" class="btn btn-primary">로그인 </button>
 		</form>
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 	</body>
