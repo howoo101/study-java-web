@@ -8,4 +8,8 @@ spring:
     prefix: classpath:templates/
     suffix: .html
     cache: false
-
+mybatis:
+  mapper-locations:
+    - classpath:config/mapper/Board.xml
+  configuration:
+    map-underscore-to-camel-case: true
